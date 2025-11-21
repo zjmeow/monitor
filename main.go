@@ -14,6 +14,12 @@ import (
 	"time"
 )
 
+var keyToRMB = map[string]float64{
+	"XSOL":    3.6,
+	"HYUSD":   7.2,
+	"JITOSOL": 1152,
+}
+
 type Monitor struct {
 	solClient *rpc.Client
 	address   solana.PublicKey
@@ -62,7 +68,7 @@ func (m *Monitor) Run() {
 func (m *Monitor) sendNotification(name string, before, after float64) {
 	// 发送 http
 	diff := after - before
-	title := fmt.Sprintf("赚钱了！%s 利润:%v;余额%v->%v", name, diff, before, after)
+	title := fmt.Sprintf("赚钱了！ %.4f RMB！%s利润: %.4f;余额%.4f->%.4f", keyToRMB[name]*diff, name, diff, before, after)
 	fmt.Println(title)
 	url := fmt.Sprintf("https://sctapi.ftqq.com/SCT130069TmrwzmLAkwkYSqi6grDbW2kTA.send?title=%s&desp=messagecontent", title)
 	response, err := http.Get(url)
