@@ -18,6 +18,8 @@ var keyToRMB = map[string]float64{
 	"XSOL":    3.6,
 	"HYUSD":   7.2,
 	"JITOSOL": 1152,
+	"WSOL":    1000,
+	"BSOL":    1200,
 }
 
 type Monitor struct {
@@ -114,6 +116,8 @@ func main() {
 			"XSOL":    solana.MustPublicKeyFromBase58("4sWNB8zGWHkh6UnmwiEtzNxL4XrN7uK9tosbESbJFfVs"),
 			"HYUSD":   solana.MustPublicKeyFromBase58("5YMkXAYccHSGnHn9nob9xEvv6Pvka9DZWH7nTbotTu9E"),
 			"JITOSOL": solana.MustPublicKeyFromBase58("J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn"),
+			"WSOL":    solana.MustPublicKeyFromBase58("So11111111111111111111111111111111111111112"),
+			"BSOL":    solana.MustPublicKeyFromBase58("bSo13r4TkiE4KumL71LsHTPpL2euBYLFx6h9HP3piy1"),
 		},
 	)
 	m.Run()
